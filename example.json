@@ -1,0 +1,1317 @@
+{
+    "node": {"id":"932","lat":68.7889175,"lon":16.5326214,"tags":{},"version":1,"timestamp":1114990494000,"changeset":12,"uid":"24","user":"Petter Reinholdtsen"},
+    "way": {
+        "id": "3236404",
+        "tags": {
+            "ref": "RV4",
+            "layer": "1",
+            "bridge": "yes",
+            "oneway": "yes",
+            "highway": "trunk",
+            "created_by": "Potlatch alpha"
+        },
+        "nodeRefs": [
+            "662816",
+            "25418059",
+            "26819210",
+            "29756298",
+            "29756291",
+            "662800",
+            "662798"
+        ],
+        "version": 1,
+        "timestamp": 1188996908000,
+        "changeset": 340696,
+        "uid": "4948",
+        "user": "Bobkare"
+    },
+    "relation": {
+        "id": "7384",
+        "tags": {
+            "ref": "88",
+            "name": "Vosges",
+            "type": "boundary",
+            "name:de": "Vogesen",
+            "name:es": "Vosgos",
+            "name:ru": "Вогезы",
+            "boundary": "administrative",
+            "ref:NUTS": "FR414",
+            "ISO3166-2": "FR-88",
+            "ref:INSEE": "88",
+            "wikipedia": "fr:Vosges (département)",
+            "admin_level": "6"
+        },
+        "members": [
+            {
+                "ref": "88208282",
+                "role": "admin_centre",
+                "type": "node"
+            },
+            {
+                "ref": "135616568",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60131509",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229687869",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35333778",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229687868",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237411037",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35334294",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60126557",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237411035",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237452531",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60126575",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60126555",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60126553",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237367975",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237367977",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "230760635",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60128999",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60129001",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "230760636",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60128992",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60128997",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "237105503",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229365541",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60128986",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "65085916",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229359828",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229244107",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60124576",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229240026",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "54478599",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "54483198",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "53725571",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229078568",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60121344",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "229018025",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60121347",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59948673",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58522737",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59948681",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59935988",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943334",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943371",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59945983",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "230846972",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943356",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "82368279",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943353",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943330",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943368",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943372",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "82368278",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "83702426",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "83537297",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943343",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "83592220",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59943405",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59959084",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "83649312",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59959140",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59959090",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59961670",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59953735",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59953722",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "43378487",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59953718",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59953711",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "43377754",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "116439225",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "116439993",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59961650",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "45772124",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59961655",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120607",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120106",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35445571",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120099",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "129092187",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120097",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "128384611",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120098",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "128384402",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "128383968",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60120095",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "113700357",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33393103",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "43381934",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "43169893",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33388159",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33385968",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31348536",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33764923",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "23301669",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "23301666",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31348373",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31348372",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59511054",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59511055",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31348924",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60781387",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "61009223",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31628757",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "61009239",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31633233",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59323127",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31635316",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58665144",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58665167",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31646148",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31648529",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58665149",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31649777",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31551649",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31551072",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31650612",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31651394",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31549845",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31652622",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31652967",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31729242",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31548116",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31730464",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31731097",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "29216897",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "23301543",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58816431",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58935667",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31747317",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31747316",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31748466",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31751640",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58935044",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58935042",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31751955",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31753113",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "58948140",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31753551",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "59106565",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "32060308",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797006",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797004",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797700",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797707",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "23301581",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33170417",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27557499",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797708",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31797709",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31798613",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27556975",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "32734457",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "124492749",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "124492750",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27556669",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "31776641",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "245491270",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "84594805",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27556462",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27555917",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33157385",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33157493",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35012332",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "33171448",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223129005",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "27549424",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35014699",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35317010",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "197502942",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "194284515",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35317178",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35317730",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35320517",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35321143",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "194284516",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "197335910",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35321476",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "188630388",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35321738",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "184619159",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "184619160",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35322165",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "185564762",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35322298",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "132692653",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "132692651",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35322634",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "177207061",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "97566608",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "97566605",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35322635",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223163351",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35323609",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "194898494",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35323879",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35324354",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "194898495",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "205321482",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "205321481",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35713402",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35324357",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35325756",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35326006",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "65642557",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "198251021",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "198251020",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "65642562",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60170711",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "65075468",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60170713",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "200201543",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "206342414",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "65083049",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60170699",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60170698",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "206342415",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60170696",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "216937009",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "220881193",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "193026077",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60168619",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60135723",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "193026078",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "217844730",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60135720",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137726",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137752",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137749",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "217844729",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "217993513",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137734",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "222894357",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "206342018",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "206342019",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137724",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "222949134",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137738",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137751",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137722",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137728",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60137721",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223631453",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35328819",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "35329273",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223631452",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223462322",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223455068",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60138186",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60131508",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "223436138",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60131513",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "135475510",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60131505",
+                "role": "outer",
+                "type": "way"
+            },
+            {
+                "ref": "60131538",
+                "role": "outer",
+                "type": "way"
+            }
+        ],
+        "version": 356,
+        "timestamp": 1388946426000,
+        "changeset": 19827882,
+        "uid": "10610",
+        "user": "RedFox"
+    }
+}
