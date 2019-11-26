@@ -1,24 +1,40 @@
-const readFile = require('./readOsmFile');
+//const readFile = require('./readOsmFile');
+const readFile = require('./readOsmFileFake');
 const Database = require('./database');
 const writeNodes = require('./nodes');
+const writeWays = require('./ways');
+const NodeCache = require('./nodeCache');
+
+async function createCache(iterators) {
+  const numNodes = await iterators.countNodes();
+  console.log('counted nodes', numNodes);
+  const nodeIterator = iterators.getNodeIterator();
+  console.log(nodeIterator);
+  const cache = new NodeCache(numNodes);
+  await cache.fill(nodeIterator);
+  console.log('filled cache');
+  return cache;
+}
 
 async function parseFile(filePath, perPage) {
   const connStr = process.env['CONN_STR'];
 
   console.log('get iterators');
   const iterators = await readFile(filePath);
+  console.log('got iterators');
 
-  var it1 = iterators.getNodeIterator();
-  console.log(await it1.next());
-
-  var it2 = iterators.getNodeIterator();
-  console.log(await it2.next());
+  const db = new Database(connStr);
 
   /*
   console.log('write nodes');
-  const db = new Database(connStr);
   await writeNodes(iterators.getNodeIterator(), 'osm.nodes', perPage, db, 0);
   */
+
+  const nodeCache = await createCache(iterators);
+
+  console.log('write ways');
+  await writeWays(iterators.getWayIterator(), nodeCache, 'osm.nodes', 1, db);
+
   console.log('Done');
   return await iterators.close();
 }

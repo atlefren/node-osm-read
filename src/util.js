@@ -1,3 +1,5 @@
+const wkx = require('wkx');
+
 const ms2Time = ms => {
   let secs = ms / 1000;
   ms = Math.floor(ms % 1000);
@@ -15,4 +17,8 @@ const printProgress = (numWritten, timeMs) => {
   process.stdout.write(`Written ${numWritten.toLocaleString('en')} in ${ms2Time(timeMs)}`);
 };
 
-module.exports = {printProgress};
+const createPoint = node => new wkx.Point(node.lon, node.lat, undefined, undefined, 4326);
+
+const toEWkb = geom => geom.toEwkb().toString('hex');
+
+module.exports = {printProgress, ms2Time, createPoint, toEWkb};

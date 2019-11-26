@@ -1,4 +1,4 @@
-class Cache {
+class NodeCache {
   constructor(numElements) {
     this.ids = new BigInt64Array(numElements);
     this.versions = new Int16Array(numElements);
@@ -6,9 +6,9 @@ class Cache {
     this.lons = new Float64Array(numElements);
   }
 
-  fill(iterator) {
+  async fill(iterator) {
     let i = 0;
-    for (let node of iterator) {
+    for await (let node of iterator) {
       this.ids[i] = node.id;
       this.versions[i] = node.version;
       this.lats[i] = node.lat;
@@ -36,50 +36,15 @@ class Cache {
       lon: this.lons[index]
     };
   }
+
+  getNodes(id) {
+    return this.findById(id).map(i => this.getByIndex(i));
+  }
 }
+
+module.exports = NodeCache;
+
 /*
-const findById = (id, cache) => {
-  let i = 0;
-  var res = [];
-  for (i; i < cache.ids.length; i++) {
-    if (cache.ids[i] == id) {
-      res.push(i);
-    }
-  }
-  return res;
-};
-
-const getByIndex = (index, cache) => ({
-  id: cache.ids[index],
-  version: cache.versions[index],
-  lat: cache.lats[index],
-  lon: cache.lons[index]
-});
-const createCache = (iterator, length) => {
-  const lats = new Float64Array(length);
-  const lons = new Float64Array(length);
-  const versions = new Int16Array(length);
-  const ids = new BigInt64Array(length);
-
-  let i = 0;
-  for (let node of iterator) {
-    ids[i] = node.id;
-    versions[i] = node.version;
-    lats[i] = node.lat;
-    lons[i] = node.lon;
-
-    //console.log(i, ': ', node.id, node.version, node.lat, node.lon);
-    i++;
-  }
-
-  return {
-    lats,
-    lons,
-    versions,
-    ids
-  };
-};
-*/
 const rand = (min, max) => Math.random() * (max - min) + min;
 
 function* iterator(numIds, numVersions) {
@@ -107,3 +72,4 @@ const indices = cache.findById(BigInt(430010n));
 for (let index of indices) {
   console.log(cache.getByIndex(index));
 }
+*/

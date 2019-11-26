@@ -47,13 +47,29 @@ async function* parseBlocks(fileBlocks, parser, elementType) {
   }
 }
 
+const countView = (pg, elementType) => pg[`${elementType}sView`].length;
+
+const countGroup = (group, elementType) => group.reduce((acc, pg) => acc + countView(pg, elementType), 0);
+
+async function count(fileBlocks, parser, elementType) {
+  let count = 0;
+  for (var i = 0; i < fileBlocks.length; ++i) {
+    const block = await readBlock(parser, fileBlocks[i]);
+    count += countGroup(block.primitivegroup, elementType);
+  }
+  return count;
+}
+
 async function readFile(filePath) {
   const parser = await getParser(filePath);
   const fileBlocks = parser.findFileBlocksByBlobType('OSMData');
   return {
     getNodeIterator: () => parseBlocks(fileBlocks, parser, 'node'),
-    ways: parseBlocks(fileBlocks, parser, 'way'),
-    relations: parseBlocks(fileBlocks, parser, 'relation'),
+    getWayIterator: () => parseBlocks(fileBlocks, parser, 'way'),
+    getRelationIterator: () => parseBlocks(fileBlocks, parser, 'relation'),
+    countNodes: () => count(fileBlocks, parser, 'node'),
+    countWays: () => count(fileBlocks, parser, 'way'),
+    countRelations: () => count(fileBlocks, parser, 'relation'),
     close: () =>
       new Promise((resolve, reject) => {
         parser.close(err => {
