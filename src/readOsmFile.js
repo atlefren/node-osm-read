@@ -51,7 +51,7 @@ async function readFile(filePath) {
   const parser = await getParser(filePath);
   const fileBlocks = parser.findFileBlocksByBlobType('OSMData');
   return {
-    nodes: parseBlocks(fileBlocks, parser, 'node'),
+    getNodeIterator: () => parseBlocks(fileBlocks, parser, 'node'),
     ways: parseBlocks(fileBlocks, parser, 'way'),
     relations: parseBlocks(fileBlocks, parser, 'relation'),
     close: () =>
