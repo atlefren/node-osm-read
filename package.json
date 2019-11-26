@@ -12,6 +12,7 @@
     "osm-read": "^0.7.0",
     "pg": "^7.14.0",
     "pg-copy-streams": "^2.2.2",
+    "process-stopwatch": "^1.0.4",
     "wkx": "^0.4.8"
   }
 }

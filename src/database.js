@@ -16,10 +16,16 @@ const pipe = (fileStream, stream) =>
     fileStream.pipe(stream);
   });
 
+const meh = s =>
+  new Promise(resolve => {
+    s.on('end', resolve);
+    s.pipe(process.stdout);
+  });
+
 async function write(pool, fileStream, tableName) {
   const client = await pool.connect();
   try {
-    const stream = client.query(copyFrom(`COPY ${tableName} FROM STDIN`));
+    const stream = client.query(copyFrom(`COPY ${tableName} FROM STDIN`)); //(DELIMITER ',', FORMAT 'csv', QUOTE '"')
     await pipe(fileStream, stream);
   } catch (e) {
     await client.query('ROLLBACK');
@@ -35,7 +41,7 @@ const getStream = pageGenerator =>
     async read() {
       const e = await pageGenerator.next();
       if (!e.done) {
-        this.push(e.value);
+        this.push(e.value, 'utf8');
       } else {
         this.push(null);
       }
@@ -79,6 +85,7 @@ class Database {
   async writePage(tableName, pageGenerator, transformStream) {
     const stream = getStream(pageGenerator).pipe(transformStream);
     await write(this.pool, stream, tableName);
+    //await meh(stream);
     stream.destroy();
   }
 }
