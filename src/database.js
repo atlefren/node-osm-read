@@ -101,8 +101,8 @@ class Database {
 
   async writePage(tableName, pageGenerator, transformStream) {
     const stream = getStream(pageGenerator).pipe(transformStream);
-    //await write(this.pool, stream, tableName);
-    await toStdOut(stream);
+    await write(this.pool, stream, tableName);
+    //await toStdOut(stream);
     stream.destroy();
   }
 }
