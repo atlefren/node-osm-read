@@ -1,33 +1,71 @@
-const splitIterator = require('./splitIterator');
 const wkx = require('wkx');
-const {createPoint} = require('./util');
 
-const buildLine = (nodeRefs, nodeCache) => {
-  const points = nodeRefs.map(nodeRef => {
-    const node = nodeCache.getNodes(nodeRef)[0]; //TODO: figure out what version to use
-    const p = createPoint(node);
-    return p;
-  });
-  return new wkx.LineString(points, 4326).toEwkt();
+const DbNodeCache = require('./dbNodeCache');
+const {toEWkb} = require('./util');
+const writeToDb = require('./dbWriter');
+const {getTransformWayStream} = require('./transform');
+
+const getNode = (nodes, timestamp) => {
+  let match = nodes[0];
+  for (let i = 1; i < nodes.length; i++) {
+    if (nodes[i].timestamp <= timestamp) {
+      match = nodes[i];
+    } else {
+      break;
+    }
+  }
+
+  return wkx.Geometry.parse(match.geom);
 };
 
-async function* buildWays(pageIterator, nodeCache) {
-  for await (const way of pageIterator) {
-    way.geom = buildLine(way.nodeRefs, nodeCache);
-    yield way;
+async function buildLine(way, cache) {
+  const allNodes = await cache.getNodes(way.nodeRefs);
+
+  if (way.nodeRefs.length === 0) {
+    return null;
+  }
+
+  const points = way.nodeRefs.map(nodeRef => {
+    const nodes = allNodes.filter(n => n.id === nodeRef);
+    return getNode(nodes.sort((a, b) => parseInt(a.timestamp - b.timestamp, 10)));
+  });
+
+  if (points.length === 0) {
+    return null;
+  }
+
+  const first = points[0];
+  const last = points[points.length - 1];
+  try {
+    if (first.x === last.x && first.y === last.y) {
+      return toEWkb(new wkx.Polygon(points, undefined, 4326));
+    }
+
+    return toEWkb(new wkx.LineString(points, 4326));
+  } catch (e) {
+    console.log(way.nodeRefs);
+    console.log(points);
+    throw e;
   }
 }
 
-async function writeWays(iterator, nodeCache, table, perPage, db) {
-  const wayIterator = splitIterator(iterator, perPage);
-
-  for await (const pageIterator of wayIterator) {
-    console.log('!!');
-    const it = await buildWays(pageIterator, nodeCache);
-    for await (way of it) {
-      console.log(way);
+async function* buildWays(wayIterator, nodeCache) {
+  let isRunning = false;
+  for await (const way of wayIterator) {
+    if (!isRunning) {
+      console.log('start loop');
+      isRunning = true;
     }
+    const geom = await buildLine(way, nodeCache);
+    const d = {...way, geom};
+    yield d;
   }
+}
+
+async function writeWays(iterator, table, perPage, db) {
+  const cache = new DbNodeCache(db.pool);
+  const it = await buildWays(iterator, cache);
+  await writeToDb(it, table, perPage, db, getTransformWayStream);
 }
 
 module.exports = writeWays;

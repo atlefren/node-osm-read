@@ -1,5 +1,4 @@
 const splitIterator = require('./splitIterator');
-const {getTransformNodeStream} = require('./transform');
 const {printProgress} = require('./util');
 const {Timer} = require('process-stopwatch');
 
@@ -9,26 +8,24 @@ async function skipIterator(iterator) {
   }
 }
 
-async function writeNodes(iterator, table, perPage, db, skip = 0) {
-  const nodeIterator = splitIterator(iterator, perPage);
-  let c = 0;
-
+async function writeToDb(iterator, table, perPage, db, getTransformStream, skip = 0) {
+  console.log(`Write to ${table}`);
   await db.ensureTable(table);
   const timer = new Timer();
   timer.start();
 
-  for await (const pageIterator of nodeIterator) {
+  let c = 0;
+  for await (const pageIterator of splitIterator(iterator, perPage)) {
     const numWritten = (c + 1) * perPage;
     if (numWritten < skip) {
       await skipIterator(pageIterator);
     } else {
-      await db.writePage(table, pageIterator, getTransformNodeStream());
+      await db.writePage(table, pageIterator, getTransformStream());
     }
     printProgress(numWritten, timer.read().millis);
     c++;
   }
   timer.stop();
-  console.log('');
 }
 
-module.exports = writeNodes;
+module.exports = writeToDb;

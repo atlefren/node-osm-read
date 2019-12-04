@@ -16,7 +16,7 @@ const pipe = (fileStream, stream) =>
     fileStream.pipe(stream);
   });
 
-const meh = s =>
+const toStdOut = s =>
   new Promise(resolve => {
     s.on('end', resolve);
     s.pipe(process.stdout);
@@ -52,7 +52,24 @@ const getSchema = tableName => (tableName.split('.').length > 1 ? tableName.spli
 
 class Database {
   constructor(connectionString) {
+    if (!connectionString) {
+      throw new Error('No connection string');
+    }
     this.pool = new Pool({connectionString});
+  }
+
+  async createIndices(tableName) {
+    const client = await this.pool.connect();
+    try {
+      await client.query(`CREATE INDEX ON ${tableName} (id);`);
+      await client.query(`CREATE INDEX ON ${tableName} (version);`);
+      await client.query(`CREATE INDEX ON ${tableName} (geom) USING gist;`);
+    } catch (e) {
+      await client.query('ROLLBACK');
+      throw e;
+    } finally {
+      client.release();
+    }
   }
 
   async ensureTable(tableName) {
@@ -85,7 +102,7 @@ class Database {
   async writePage(tableName, pageGenerator, transformStream) {
     const stream = getStream(pageGenerator).pipe(transformStream);
     await write(this.pool, stream, tableName);
-    //await meh(stream);
+    //await toStdOut(stream);
     stream.destroy();
   }
 }

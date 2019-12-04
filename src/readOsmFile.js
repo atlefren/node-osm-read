@@ -26,22 +26,24 @@ const readBlock = (parser, fileBlock) => {
   });
 };
 
-function* getView(pg, elementType) {
+function* getElements(pg, elementType) {
   const view = pg[`${elementType}sView`];
   for (let i = 0; i < view.length; ++i) {
-    yield view.get(i);
+    const element = view.get(i);
+    yield element; //{...element, id: BigInt(element.id), timestamp: BigInt(element.timestamp)};
   }
 }
 
 function* readGroup(group, elementType) {
   for (var i = 0; i < group.length; ++i) {
     const pg = group[i];
-    yield* getView(pg, elementType);
+    yield* getElements(pg, elementType);
   }
 }
 
-async function* parseBlocks(fileBlocks, parser, elementType) {
-  for (var i = 0; i < fileBlocks.length; ++i) {
+async function* parseBlocks(fileBlocks, parser, elementType, startBlock = 0) {
+  for (var i = startBlock; i < fileBlocks.length; ++i) {
+    console.log('block', i);
     const block = await readBlock(parser, fileBlocks[i]);
     yield* readGroup(block.primitivegroup, elementType);
   }
@@ -64,9 +66,9 @@ async function readFile(filePath) {
   const parser = await getParser(filePath);
   const fileBlocks = parser.findFileBlocksByBlobType('OSMData');
   return {
-    getNodeIterator: () => parseBlocks(fileBlocks, parser, 'node'),
-    getWayIterator: () => parseBlocks(fileBlocks, parser, 'way'),
-    getRelationIterator: () => parseBlocks(fileBlocks, parser, 'relation'),
+    getNodeIterator: block => parseBlocks(fileBlocks, parser, 'node', block),
+    getWayIterator: block => parseBlocks(fileBlocks, parser, 'way', block),
+    getRelationIterator: () => parseBlocks(fileBlocks, parser, 'relation', block),
     countNodes: () => count(fileBlocks, parser, 'node'),
     countWays: () => count(fileBlocks, parser, 'way'),
     countRelations: () => count(fileBlocks, parser, 'relation'),

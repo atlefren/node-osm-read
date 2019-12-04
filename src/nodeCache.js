@@ -1,9 +1,14 @@
+const {writeCacheFile, readCacheFile} = require('./fileCache');
+
 class NodeCache {
   constructor(numElements) {
-    this.ids = new BigInt64Array(numElements);
-    this.versions = new Int16Array(numElements);
-    this.lats = new Float64Array(numElements);
-    this.lons = new Float64Array(numElements);
+    if (numElements) {
+      this.ids = new BigInt64Array(numElements);
+      this.versions = new Uint32Array(numElements);
+      this.timestamps = new BigInt64Array(numElements);
+      this.lats = new Float64Array(numElements);
+      this.lons = new Float64Array(numElements);
+    }
   }
 
   async fill(iterator) {
@@ -11,6 +16,7 @@ class NodeCache {
     for await (let node of iterator) {
       this.ids[i] = node.id;
       this.versions[i] = node.version;
+      this.timestamps[i] = BigInt(node.timestamp);
       this.lats[i] = node.lat;
       this.lons[i] = node.lon;
       i++;
@@ -32,44 +38,40 @@ class NodeCache {
     return {
       id: this.ids[index],
       version: this.versions[index],
+      timestamp: this.timestamps[index],
       lat: this.lats[index],
       lon: this.lons[index]
     };
   }
 
   getNodes(id) {
-    return this.findById(id).map(i => this.getByIndex(i));
+    const nodes = this.findById(id).map(i => this.getByIndex(i));
+    return nodes.sort((a, b) => parseInt(a.timestamp - b.timestamp, 10));
+  }
+
+  async write(fileName) {
+    await writeCacheFile(fileName, {
+      ids: this.ids,
+      versions: this.versions,
+      timestamps: this.timestamps,
+      lats: this.lats,
+      lons: this.lons
+    });
   }
 }
 
-module.exports = NodeCache;
-
-/*
-const rand = (min, max) => Math.random() * (max - min) + min;
-
-function* iterator(numIds, numVersions) {
-  for (let id = 1; id <= numIds; id++) {
-    for (let v = 1; v <= numVersions; v++) {
-      yield {
-        id: BigInt(id),
-        version: v,
-        lat: rand(-90, 90),
-        lon: rand(-180, 180)
-      };
-    }
+async function fromFile(fileName) {
+  const res = await readCacheFile(fileName);
+  if (!res) {
+    return false;
   }
+  const nodeCache = new NodeCache();
+  nodeCache.ids = res.ids;
+  nodeCache.versions = res.versions;
+  nodeCache.timestamps = res.timestamps;
+  nodeCache.lats = res.lats;
+  nodeCache.lons = res.lons;
+  return nodeCache;
 }
 
-const numIds = 150000000;
-const numVersions = 3;
-
-const cache = new Cache(numIds * numVersions);
-cache.fill(iterator(numIds, numVersions));
-console.log('cache filled');
-
-const indices = cache.findById(BigInt(430010n));
-
-for (let index of indices) {
-  console.log(cache.getByIndex(index));
-}
-*/
+module.exports = {NodeCache, fromFile};
