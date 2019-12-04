@@ -71,7 +71,7 @@ const main = () => {
   }
 
   //parseFile(args[0], 500000)
-  parseFile(args[0], 1000)
+  parseFile(args[0], 10000)
     .then(() => process.exit(0))
     .catch(err => {
       console.error(err);

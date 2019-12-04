@@ -43,7 +43,6 @@ function* readGroup(group, elementType) {
 
 async function* parseBlocks(fileBlocks, parser, elementType, startBlock = 0) {
   for (var i = startBlock; i < fileBlocks.length; ++i) {
-    console.log('block', i);
     const block = await readBlock(parser, fileBlocks[i]);
     yield* readGroup(block.primitivegroup, elementType);
   }
