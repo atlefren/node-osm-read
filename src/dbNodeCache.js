@@ -1,6 +1,7 @@
 class DbNodeCache {
-  constructor(pool) {
+  constructor(pool, nodeTable) {
     this.pool = pool;
+    this.nodeTable = nodeTable;
   }
 
   async getNodes(ids, maxTs) {
@@ -14,7 +15,7 @@ class DbNodeCache {
             extract(epoch from ts) * 1000 as timestamp,
             st_asewkb(geom) as geom
           FROM
-            osm.nodes
+            ${this.nodeTable}
           WHERE
             id = ANY($1::bigint[])
           AND

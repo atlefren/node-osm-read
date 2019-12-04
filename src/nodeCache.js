@@ -1,5 +1,9 @@
 const {writeCacheFile, readCacheFile} = require('./fileCache');
 
+/*
+An attempt to create a cache file, but ended up requiring too much memory
+*/
+
 class NodeCache {
   constructor(numElements) {
     if (numElements) {
