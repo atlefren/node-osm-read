@@ -14,21 +14,28 @@ const getNode = (nodes, timestamp) => {
       break;
     }
   }
-
-  return wkx.Geometry.parse(match.geom);
+  if (match && match.geom) {
+    return wkx.Geometry.parse(match.geom);
+  }
+  return null;
 };
 
 async function buildLine(way, cache) {
-  const allNodes = await cache.getNodes(way.nodeRefs);
+  const allNodes = await cache.getNodes(way.nodeRefs, way.timestamp);
 
   if (way.nodeRefs.length === 0) {
     return null;
   }
 
-  const points = way.nodeRefs.map(nodeRef => {
-    const nodes = allNodes.filter(n => n.id === nodeRef);
-    return getNode(nodes.sort((a, b) => parseInt(a.timestamp - b.timestamp, 10)));
-  });
+  const points = way.nodeRefs
+    .map(nodeRef => {
+      const nodes = allNodes.filter(n => n.id === nodeRef);
+      return getNode(
+        nodes.sort((a, b) => parseInt(a.timestamp - b.timestamp, 10)),
+        way.timestamp
+      );
+    })
+    .filter(n => n !== null);
 
   if (points.length === 0) {
     return null;
