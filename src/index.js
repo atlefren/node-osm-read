@@ -7,7 +7,20 @@ const writeWays = require('./ways');
 const {getTransformNodeStream} = require('./transform');
 const {ms2Time} = require('./util');
 
-async function parseFile(filePath, perPage, nodeTable, wayTable, waysStartBlock) {
+async function parseFile(config) {
+  const {
+    filePath,
+    batchSize,
+    nodeTable,
+    wayTable,
+    relationsTable,
+    waysStartBlock,
+    relationsStartBlock,
+    writeNodes,
+    writeWays,
+    writeRelations
+  } = config;
+
   const totalTtimer = new Timer();
   totalTtimer.start();
   const timer = new Timer();
@@ -19,17 +32,27 @@ async function parseFile(filePath, perPage, nodeTable, wayTable, waysStartBlock)
   const iterators = await readFile(filePath);
   timer.stop();
   console.log(`got iterators in ${ms2Time(timer.read().millis)}`);
-  timer.reset();
 
-  console.log('write nodes');
-  const nodeIterator = iterators.getNodeIterator();
-  await writeToDb(nodeIterator, nodeTable, perPage, db, getTransformNodeStream, 0);
+  if (writeNodes) {
+    console.log('write nodes');
+    const nodeIterator = iterators.getNodeIterator();
+    await writeToDb(nodeIterator, nodeTable, batchSize, db, getTransformNodeStream);
+    console.log('nodes written, creating indicies');
+    await db.createIndices(nodeTable);
+    console.log('node indices created!');
+  }
 
-  timer.reset();
-
-  console.log('write ways');
-  const wayIterator = iterators.getWayIterator(waysStartBlock);
-  await writeWays(wayIterator, wayTable, perPage, db, nodeTable);
+  if (writeWays) {
+    console.log('write ways');
+    const wayIterator = iterators.getWayIterator(waysStartBlock);
+    await writeWays(wayIterator, wayTable, batchSize, db, nodeTable);
+    console.log('ways written, creating indicies');
+    await db.createIndices(wayTable);
+    console.log('way indices created!');
+  }
+  if (writeRelations) {
+    console.log('write relations');
+  }
 
   console.log('Done');
 
@@ -46,14 +69,21 @@ async function main() {
     throw new Error('provide filename');
   }
 
-  const filePath = args[0];
-  const batchSize = 10000;
-  const nodeTable = 'osm.nodes';
-  const wayTable = 'osm.ways';
-  const waysStartBlock = 17515;
+  const config = {
+    filePath: args[0],
+    batchSize: 10000,
+    nodeTable: 'osm.nodes',
+    wayTable: 'osm.ways',
+    relationsTable: 'osm.relations',
+    waysStartBlock: 17515,
+    relationsStartBlock: 17515,
+    writeNodes: false,
+    writeWays: false,
+    writeRelations: true
+  };
 
   try {
-    await parseFile(filePath, batchSize, nodeTable, wayTable, waysStartBlock);
+    await parseFile(config);
     process.exit(0);
   } catch (err) {
     console.error(err);
